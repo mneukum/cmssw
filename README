@@ -1,1 +1,6 @@
 Introduction to CMSSW: http://cms-sw.github.io
+
+My local branch with CMSSW_11_1_2_patch3 + timing to tracks. 
+Resolved merge conflict when running `git cms-merge-topic dseith:daniel_new_timing_variables` in `CMSSW_1!_1_2_patch3` (david's branch was in 10_6_0_patch2)
+
+This should be used when running the DeepNtuplizer on 11_1_2. See the corresponding setup in my other repo.
