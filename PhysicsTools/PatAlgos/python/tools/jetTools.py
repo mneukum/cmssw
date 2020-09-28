@@ -307,7 +307,8 @@ def setupBTagging(process, jetSource, pfCandidates, explicitJTA, pvSource, svSou
     runIVFforCTagOnly = False
     ivfcTagInfos = ['pfInclusiveSecondaryVertexFinderCvsLTagInfos', 'pfInclusiveSecondaryVertexFinderNegativeCvsLTagInfos']
     ## if MiniAOD and running c tagging
-    if pvSource.getModuleLabel() == 'offlineSlimmedPrimaryVertices' and any(i in requiredTagInfos for i in ivfcTagInfos) and not runIVF:
+#$$    if pvSource.getModuleLabel() == 'offlineSlimmedPrimaryVertices' and any(i in requiredTagInfos for i in ivfcTagInfos) and not runIVF:
+    if pvSource.getModuleLabel() == 'offlineSlimmedPrimaryVertices4D' and any(i in requiredTagInfos for i in ivfcTagInfos) and not runIVF:
         runIVFforCTagOnly = True
         runIVF = True
         sys.stderr.write("-------------------------------------------------------------------\n")
@@ -779,7 +780,8 @@ def setupBTagging(process, jetSource, pfCandidates, explicitJTA, pvSource, svSou
     ## if re-running IVF
     if runIVF:
         if not tightBTagNTkHits:
-            if pvSource.getModuleLabel() == 'offlineSlimmedPrimaryVertices': ## MiniAOD case
+#$$            if pvSource.getModuleLabel() == 'offlineSlimmedPrimaryVertices': ## MiniAOD case
+            if pvSource.getModuleLabel() == 'offlineSlimmedPrimaryVertices4D': ## MiniAOD case
                 if not runIVFforCTagOnly: rerunningIVFMiniAOD()
             else:
                 rerunningIVF()
@@ -793,7 +795,8 @@ def setupBTagging(process, jetSource, pfCandidates, explicitJTA, pvSource, svSou
                     _temp = getattr(process, btagPrefix+'inclusiveCandidateVertexFinder')
                     _temp.minHits = cms.uint32(8)
             ## MiniAOD case
-            if pvSource.getModuleLabel() == 'offlineSlimmedPrimaryVertices':
+#$$            if pvSource.getModuleLabel() == 'offlineSlimmedPrimaryVertices':
+            if pvSource.getModuleLabel() == 'offlineSlimmedPrimaryVertices4D':
                 if hasattr( process, btagPrefix+'inclusiveCandidateVertexFinder' ):
                     _temp = getattr(process, btagPrefix+'inclusiveCandidateVertexFinder')
                     _temp.primaryVertices = pvSource
@@ -814,7 +817,8 @@ def setupBTagging(process, jetSource, pfCandidates, explicitJTA, pvSource, svSou
                     _temp = getattr(process, btagPrefix+'inclusiveCandidateVertexFinderCvsL')
                     _temp.minHits = cms.uint32(8)
             ## MiniAOD case
-            if pvSource.getModuleLabel() == 'offlineSlimmedPrimaryVertices':
+#$$            if pvSource.getModuleLabel() == 'offlineSlimmedPrimaryVertices':
+            if pvSource.getModuleLabel() == 'offlineSlimmedPrimaryVertices4D':
                 if hasattr( process, btagPrefix+'inclusiveCandidateVertexFinderCvsL' ):
                     _temp = getattr(process, btagPrefix+'inclusiveCandidateVertexFinderCvsL')
                     _temp.primaryVertices = pvSource
@@ -1498,7 +1502,8 @@ class UpdateJetCollection(ConfigToolBase):
         self.addParameter(self._defaultParameters,'jetSource','', "Label of the input collection from which the new patJet collection should be created", cms.InputTag)
         self.addParameter(self._defaultParameters,'pfCandidates',cms.InputTag('packedPFCandidates'), "Label of the input collection for candidatecandidatese used in b-tagging", cms.InputTag)
         self.addParameter(self._defaultParameters,'explicitJTA', False, "Use explicit jet-track association")
-        self.addParameter(self._defaultParameters,'pvSource',cms.InputTag('offlineSlimmedPrimaryVertices'), "Label of the input collection for primary vertices used in b-tagging", cms.InputTag)
+#$$        self.addParameter(self._defaultParameters,'pvSource',cms.InputTag('offlineSlimmedPrimaryVertices'), "Label of the input collection for primary vertices used in b-tagging", cms.InputTag)
+        self.addParameter(self._defaultParameters,'pvSource',cms.InputTag('offlineSlimmedPrimaryVertices4D'), "Label of the input collection for primary vertices used in b-tagging", cms.InputTag)
         self.addParameter(self._defaultParameters,'svSource',cms.InputTag('slimmedSecondaryVertices'), "Label of the input collection for IVF vertices used in b-tagging", cms.InputTag)
         self.addParameter(self._defaultParameters,'elSource',cms.InputTag('slimmedElectrons'), "Label of the input collection for electrons used in b-tagging", cms.InputTag)
         self.addParameter(self._defaultParameters,'muSource',cms.InputTag('slimmedMuons'), "Label of the input collection for muons used in b-tagging", cms.InputTag)
