@@ -18,6 +18,14 @@ namespace reco {
       /* [jetNSelectedTracks]                       = */ "selected tracks in the jet",
       /* [jetNTracksEtaRel]                         = */ "number of tracks for which etaRel is computed",
 
+//$$
+      /* [puDensity]				    = */ "PU density",
+      /* [eventTime]				    = */ "event time, default = -1",
+      /* [jetTime]  				    = */ "jet time wrt event time, default = -1",
+      /* [jetVertexTime]			    = */ "jet vertex time wrt event time, for those tracks within a SV, default = -1",
+      /* [svTime]				    = */ "SV time wrt event time, for those tracks within a SV, default = -1",
+//$$
+
       /* [trackMomentum]                            = */ "track momentum",
       /* [trackEta]                                 = */ "track pseudorapidity",
       /* [trackPhi]                                 = */ "track polar angle",
@@ -191,6 +199,14 @@ namespace reco {
       /* [jetNTracks]                               = */ "jetNTracks",
       /* [jetNSelectedTracks]                       = */ "jetNSelectedTracks",
       /* [jetNTracksEtaRel]                         = */ "jetNTracksEtaRel",
+
+//$$
+      /* [puDensity]				    = */ "puDensity",
+      /* [eventTime]				    = */ "eventTime",
+      /* [jetTime]  				    = */ "jetTime",
+      /* [jetVertexTime]			    = */ "jetVertexTime",
+      /* [svTime]				    = */ "svTime",
+//$$
 
       /* [trackMomentum]                            = */ "trackMomentum",
       /* [trackEta]                                 = */ "trackEta",

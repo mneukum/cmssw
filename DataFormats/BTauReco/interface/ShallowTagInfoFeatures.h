@@ -13,6 +13,12 @@ namespace btagbtvdeep {
     float trackSip3dValAboveCharm;  // track 3D signed impact parameter of first track lifting mass above charm
     float trackSip3dSigAboveCharm;  // track 3D signed impact parameter significance of first track lifting mass above charm
     float vertexCategory;           // category of secondary vertex (Reco, Pseudo, No)
+//$$
+    float puDensity;       // PU density
+    float eventTime;       // event time
+    float jetTime;         // jet time wrt event time
+    float jetVertexTime;   // jet time wrt event time, from those tracks within a SV
+//$$
     // track info
     float jetNTracksEtaRel;  // tracks associated to jet for which trackEtaRel is calculated
     float jetNSelectedTracks;
