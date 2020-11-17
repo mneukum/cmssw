@@ -412,8 +412,8 @@
   <class name="btagbtvdeep::SecondaryVertexFeatures" ClassVersion="3">
     <version ClassVersion="3" checksum="3610780843"/>
   </class>
-  <class name="btagbtvdeep::ShallowTagInfoFeatures" ClassVersion="3">
-    <version ClassVersion="3" checksum="273372007"/>
+  <class name="btagbtvdeep::ShallowTagInfoFeatures" ClassVersion="4">
+    <version ClassVersion="4" checksum="60859705"/>
   </class>
   <class name="btagbtvdeep::NeutralCandidateFeatures" ClassVersion="3">
     <version ClassVersion="3" checksum="938442516"/>
