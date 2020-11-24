@@ -41,7 +41,8 @@ private:
   std::vector<std::string> output_names_;
 
   enum InputIndexes { kGlobal = 0, kChargedCandidates = 1, kNeutralCandidates = 2, kVertices = 3, kJetPt = 4 };
-  constexpr static unsigned n_features_global_ = 15;
+//$$   constexpr static unsigned n_features_global_ = 15;
+  constexpr static unsigned n_features_global_ = 19;
   constexpr static unsigned n_cpf_ = 25;
   constexpr static unsigned n_features_cpf_ = 16;
   constexpr static unsigned n_npf_ = 25;
@@ -80,9 +81,8 @@ void DeepFlavourONNXJetTagsProducer::fillDescriptions(edm::ConfigurationDescript
   desc.add<edm::InputTag>("src", edm::InputTag("pfDeepFlavourTagInfos"));
   desc.add<std::vector<std::string>>("input_names", {"input_1", "input_2", "input_3", "input_4", "input_5"});
   desc.add<edm::FileInPath>("model_path",
+                            edm::FileInPath("RecoBTag/Combined/data/DeepFlavour_Phase2/DeepJet_pv3d_wt.onnx"));
 //                            edm::FileInPath("RecoBTag/Combined/data/DeepFlavour_Phase2/model.onnx"));
-//                            edm::FileInPath("RecoBTag/Combined/data/DeepFlavour_Phase2/model.onnx"));
-                            edm::FileInPath("RecoBTag/Combined/data/DeepFlavour_Phase2/DeepJet_pv3d_nt.onnx"));
   desc.add<std::vector<std::string>>("output_names", {});
   desc.add<std::vector<std::string>>(
       "flav_names", std::vector<std::string>{"probb", "probbb", "problepb", "probc", "probuds", "probg"});
@@ -161,13 +161,21 @@ void DeepFlavourONNXJetTagsProducer::make_inputs(unsigned i_jet, const reco::Dee
   start = ptr;
   *ptr = jet_features.pt;
   *(++ptr) = jet_features.eta;
+//$$
+  const auto& tag_info_features = features.tag_info_features;
+//  std::cout << "pt trackSumJetEtRatio" << jet_features.pt << " " << tag_info_features.trackSumJetEtRatio << " " <<  std::endl;
+//  std::cout << "et jt jvt pud: " << tag_info_features.eventTime << " " << tag_info_features.jetTime << " " << tag_info_features.jetVertexTime << " " << tag_info_features.puDensity << " " << std::endl;
+  *(++ptr) = tag_info_features.eventTime;
+  *(++ptr) = tag_info_features.jetTime;
+  *(++ptr) = tag_info_features.jetVertexTime;
+  *(++ptr) = tag_info_features.puDensity;
+//$$
   // number of elements in different collections
   *(++ptr) = features.c_pf_features.size();
   *(++ptr) = features.n_pf_features.size();
   *(++ptr) = features.sv_features.size();
   *(++ptr) = features.npv;
   // variables from ShallowTagInfo
-  const auto& tag_info_features = features.tag_info_features;
   *(++ptr) = tag_info_features.trackSumJetEtRatio;
   *(++ptr) = tag_info_features.trackSumJetDeltaR;
   *(++ptr) = tag_info_features.vertexCategory;
