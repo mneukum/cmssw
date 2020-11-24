@@ -1,5 +1,5 @@
 #include "RecoBTag/FeatureTools/interface/deep_helpers.h"
-#include "DataFormats/BTauReco/interface/ShallowTagInfoFeatures.h"
+#include "DataFormats/BTauReco/interface/ShallowTagInfoFeatures.h" //$$ include the time variables per jet here, but even if already in TaggingVariable.h ?
 
 #include "DataFormats/BTauReco/interface/ShallowTagInfo.h"
 #include "DataFormats/BTauReco/interface/TaggingVariable.h"
@@ -21,5 +21,20 @@ namespace btagbtvdeep {
     tag_info_features.jetNTracksEtaRel = tag_info_vars.get(reco::btau::jetNTracksEtaRel, -1);
     tag_info_features.jetNSelectedTracks =
         std::min(tag_info_vars.getList(reco::btau::trackMomentum, false).size(), max_jetNSelectedTracks);
+//$$
+    tag_info_features.puDensity     = tag_info_vars.get(reco::btau::puDensity, -1);
+    tag_info_features.eventTime     = tag_info_vars.get(reco::btau::eventTime, -1);
+    tag_info_features.jetTime       = tag_info_vars.get(reco::btau::jetTime, -1);
+    tag_info_features.jetVertexTime = tag_info_vars.get(reco::btau::jetVertexTime, -1);
+
+//   std::cout << " ShallowTagInfoConverter Jet pt eta "  
+//             << tag_info_vars.get(reco::btau::jetPt) << " " << tag_info_vars.get(reco::btau::jetEta) 
+//             << " PUrho " << tag_info_vars.get(reco::btau::puDensity)
+// 	    << " Time evt jet jvx vtx" << tag_info_vars.get(reco::btau::eventTime) 
+// 	    << " " << tag_info_vars.get(reco::btau::jetTime)
+// 	    << " " << tag_info_vars.get(reco::btau::jetVertexTime)
+// 	    << " nSV " << tag_info_vars.get(reco::btau::jetNSecondaryVertices)
+// 	    << std::endl;
+//$$
   }
 }  // namespace btagbtvdeep

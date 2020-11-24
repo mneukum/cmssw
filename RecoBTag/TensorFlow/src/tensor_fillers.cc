@@ -32,6 +32,12 @@ namespace btagbtvdeep {
     *(++ptr) = tag_info_features.trackSip2dSigAboveCharm;
     *(++ptr) = tag_info_features.trackSip3dValAboveCharm;
     *(++ptr) = tag_info_features.trackSip3dSigAboveCharm;
+//$$
+    *(++ptr) = tag_info_features.puDensity;
+    *(++ptr) = tag_info_features.eventTime;
+    *(++ptr) = tag_info_features.jetTime;
+    *(++ptr) = tag_info_features.jetVertexTime;
+//$$
     *(++ptr) = tag_info_features.jetNSelectedTracks;
     *(++ptr) = tag_info_features.jetNTracksEtaRel;
   }
