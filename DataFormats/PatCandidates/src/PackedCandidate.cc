@@ -5,6 +5,9 @@
 #include "DataFormats/SiStripDetId/interface/StripSubdetector.h"
 
 #include "DataFormats/Math/interface/liblogintpack.h"
+//$$
+#include "TRandom.h"
+//$$
 using namespace logintpack;
 
 CovarianceParameterization pat::PackedCandidate::covarianceParameterization_;
@@ -179,7 +182,12 @@ void pat::PackedCandidate::unpackTrk() const {
                                              charge(),
                                              *(m_.load()),
                                              reco::TrackBase::undefAlgorithm,
-                                             reco::TrackBase::loose);
+//$$                                             reco::TrackBase::loose);
+                                             reco::TrackBase::loose,
+					     time(), 0, timeError());
+//$$					         time()+gRandom->Gaus(0,0.017), 0, timeError()); // time resolution = 40 ps
+//$$					         time()+gRandom->Gaus(0,0.032), 0, timeError()); // time resolution = 50 ps
+//$$					         time()+gRandom->Gaus(0,0.044), 0, timeError()); // time resolution = 60 ps
   int i = 0;
   if (firstHit_ == 0) {  // Backward compatible
     if (innerLost == validHitInFirstPixelBarrelLayer) {
