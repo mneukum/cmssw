@@ -81,7 +81,7 @@ void DeepFlavourONNXJetTagsProducer::fillDescriptions(edm::ConfigurationDescript
   desc.add<std::vector<std::string>>("input_names", {"input_1", "input_2", "input_3", "input_4", "input_5"});
   desc.add<edm::FileInPath>("model_path",
 //                            edm::FileInPath("RecoBTag/Combined/data/DeepFlavour_Phase2/model.onnx"));
-//                            edm::FileInPath("RecoBTag/Combined/data/DeepFlavour_Phase2/model.onnx"));
+//                            edm::FileInPath("RecoBTag/Combined/data/DeepFlavour_Phase2/DeepJet_pv3d_wt.onnx")); CAREFUL, needs updated input definition!
                             edm::FileInPath("RecoBTag/Combined/data/DeepFlavour_Phase2/DeepJet_pv3d_nt.onnx"));
   desc.add<std::vector<std::string>>("output_names", {});
   desc.add<std::vector<std::string>>(
